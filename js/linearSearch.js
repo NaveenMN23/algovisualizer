@@ -32,7 +32,6 @@ async function runAlgo(){
         code.style.display = "flex";
         //Calling linear Search functionality
         let result = await linearSearch(dataSet, searchValue, speed);
-        console.log(result)
         if(result >= 0 && result !== null){
             //Set the status (Completed/ Found)
             status.innerText = `Found on index ${result}`;
@@ -44,8 +43,7 @@ async function runAlgo(){
         }
     }else if(selectedAlgo === "2"){
         //Sorted array
-        let sortedArray = await dataSet.sort();
-        console.log(sortedArray);
+        let sortedArray = await sortedDataArray(dataSet);
         //Sorted UI dataset
         await sortedDataSet(sortedArray);
         //Set the status (Searching)
@@ -221,9 +219,14 @@ async function linearSearch(dataArray, searchValue, speed){
     }
 }
 
-async function sortedArray(dataArray){
+async function sortedDataArray(dataArray){
     //Sort and return array
-    return dataArray.sort();
+    if(dataArray && dataArray.length > 0){
+        dataArray.sort(function(a, b){
+            return a - b;
+        });
+    }
+    return dataArray;
 }
 
 async function binarySearch(dataArray, searchValue, speed) {
@@ -306,7 +309,6 @@ async function bubbleSort(dataArray, speed){
 async function selectionSort(dataArray, speed){
     if(dataArray){
         let len = dataArray.length;
-        console.log(dataArray.length);
         for(let i=0; i< len; i++){
             let min = i;
             //Setting the color code for current node
@@ -452,7 +454,7 @@ function generateRandomNumber(){
 
 //Create Row
 function createRow(className, generatedNumber, index){
-    arrayList.push(generatedNumber);
+    arrayList.push(parseInt(generatedNumber));
     let tableRow = document.getElementById("randomArrayRow");
     let tableColumn = document.createElement("td");
     tableColumn.appendChild(document.createTextNode(generatedNumber));
