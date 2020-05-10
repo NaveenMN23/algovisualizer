@@ -1,6 +1,13 @@
 //Global array declaration
 var arrayList;
 
+//speed value display UI
+async function setSpeedValue(){
+    let sortingspeed = document.getElementById("sortingspeed").value;
+    let speed = document.getElementById("speedvalue");
+    speed.innerText=sortingspeed;
+}
+
 //Execute on Submit action
 async function runAlgo(){
     //Get dataSet Value
@@ -11,6 +18,9 @@ async function runAlgo(){
     let searchValue = document.getElementById("searchvalue").value;
     //Control animation speed
     let speed = document.getElementById("sortingspeed").value;
+    //disable button
+    document.getElementById("generateDataSetId").disabled = true;
+    document.getElementById("submitButton").disabled = true;
     if(selectedAlgo === "1"){
         //Set the status (Searching)
         let status = document.getElementById("status");
@@ -144,6 +154,8 @@ async function runAlgo(){
         status.innerText = `Sorted. No of iterations ${result}`;
         status.style.color = "#1AA260";
     }
+    document.getElementById("generateDataSetId").disabled = false;
+    document.getElementById("submitButton").disabled = false;
 }
 
 async function buttonEnable(){
@@ -154,6 +166,8 @@ async function buttonEnable(){
         document.getElementById("searchvalue").disabled = false;
         //Default animation speed setter
         document.getElementById("sortingspeed").value = "1";
+        //Speed Value
+        await setSpeedValue();
         //Toggle the button text Search
         document.getElementById("submitButton").innerText = "Search";
         //Display color code status based on the algorithm
@@ -166,6 +180,8 @@ async function buttonEnable(){
         document.getElementById("searchvalue").disabled = false;
         //Default animation speed setter
         document.getElementById("sortingspeed").value = "2";
+        //Speed Value
+        await setSpeedValue();
         //Toggle the button text Search
         document.getElementById("submitButton").innerText = "Search";
         //Display color code status based on the algorithm
@@ -178,6 +194,8 @@ async function buttonEnable(){
         document.getElementById("searchvalue").disabled = true;
         //Default animation speed setter
         document.getElementById("sortingspeed").value = "1";
+        //Speed Value
+        await setSpeedValue();
         //Toggle the button text Sort
         document.getElementById("submitButton").innerText = "Sort";
         //Display color code status based on the algorithm
@@ -190,6 +208,8 @@ async function buttonEnable(){
         document.getElementById("searchvalue").disabled = true;
         //Default animation speed setter
         document.getElementById("sortingspeed").value = "1";
+        //Speed Value
+        await setSpeedValue();
         //Toggle the button text Sort
         document.getElementById("submitButton").innerText = "Sort";
         //Display color code status based on the algorithm
@@ -442,7 +462,7 @@ function deleteRow(){
 //add row
 function addRow(){
     let tableBody = document.getElementById("tableBody");
-    let tableRow = document.createElement("tr");
+    let tableRow = document.createElement("div");
     tableRow.setAttribute("id","randomArrayRow");
     tableBody.appendChild(tableRow);
 }
@@ -456,7 +476,7 @@ function generateRandomNumber(){
 function createRow(className, generatedNumber, index){
     arrayList.push(parseInt(generatedNumber));
     let tableRow = document.getElementById("randomArrayRow");
-    let tableColumn = document.createElement("td");
+    let tableColumn = document.createElement("div");
     tableColumn.appendChild(document.createTextNode(generatedNumber));
     tableColumn.setAttribute('id','column'+index);
     tableColumn.setAttribute('class',className);
