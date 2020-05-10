@@ -20,15 +20,70 @@
     box-shadow: 0 0 3px #4C8BF5;
 }
 /*Flex*/
-.flex{
-    display: flex;
+.button-flex {
     justify-content: space-between;
-    flex-wrap: wrap;
+    display: flex;
 }
-.flex-container {
+.flex-align {
     flex-direction: row;
     display: inline-flex;
     align-items: center;
+    text-align: center;
+}
+.flex-outer,
+.flex-inner {
+  list-style-type: none;
+  padding: 0;
+}
+
+.flex-outer {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.flex .flex-container{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.flex > .flex-container {
+  margin-bottom: 15px;
+}
+
+.flex .flex-container label,
+.flex .flex-container p {
+  padding: 8px;
+}
+
+.flex > .flex-container > label,
+.flex .flex-container p {
+  flex: 1 0 120px;
+  max-width: 220px;
+}
+
+.flex > .flex-container > label + *,
+.flex-inner {
+  flex: 1 0 220px;
+}
+
+.flex .flex-container p {
+  margin: 0;
+}
+
+.flex .flex-container textarea {
+  padding: 15px;
+  border: none;
+}
+
+.flex .flex-container {
+  margin-left: auto;
+  border: none;
+  border-radius: 2px;
+}
+
+.flex-inner .flex-container {
+  width: 100px;
 }
 /*Each form element*/
 .form-control, .custom-select, .btn{
@@ -43,9 +98,10 @@
     text-align: center;
     background-color: #4C8BF5;
     color: white;
-    border-radius: 20px;
+    border-radius: 5px;
     border: 10px solid;
     padding: 10px;
+    width: 60px;
 }
 /*Random Array style*/
 #idRandomArray{
@@ -98,25 +154,28 @@
     text-align: center;
     background-color: #1AA260;
     color: white;
-    border-radius: 20px;
+    border-radius: 5px;
     border: 10px solid;
     padding: 10px;
+    width: 60px;
 }
 .currentNode{
     text-align: center;
     background-color: #DE5246;
     color: white;
-    border-radius: 20px;
+    border-radius: 5px;
     border: 10px solid;
     padding: 10px;
+    width: 60px;
 }
 .currentPointer{
     text-align: center;
     background-color: #FFCE44;
     color: white;
-    border-radius: 20px;
+    border-radius: 5px;
     border: 10px solid;
     padding: 10px;
+    width: 60px;
 }
 /*Display code block*/
 #code{
@@ -133,4 +192,10 @@
 .centerAlign{
     justify-content: center;
     margin-bottom: 20px;
+}
+#randomArrayRow{
+    flex-direction: row;
+    flex-wrap: wrap;
+    display: flex;
+    align-items: center;
 }
